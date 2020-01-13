@@ -9,7 +9,24 @@ const createWeatherURL = ( zipCode ) => {
 
 };
 
-/* Function to GET Web API Data*/
+// Function used to get weather data from OpenWeatherMap API
+const getWeatherInfo = async ( zipCode ) => {
+
+	const weatherURL = createWeatherURL( zipCode );
+
+	const response = await fetch( weatherURL );
+
+	try{
+
+		const weatherData = await response.json();
+		console.log( weatherData );
+		return weatherData;
+
+	}catch( error ){
+
+		console.log( error );
+
+	}
 
 /* Function to POST data */
 
