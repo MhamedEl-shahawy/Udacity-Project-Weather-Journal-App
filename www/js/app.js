@@ -28,7 +28,25 @@ const getWeatherInfo = async ( zipCode ) => {
 
 	}
 
+};
+
 /* Function to POST data */
 
 
 /* Function to GET Project Data */
+
+
+// Main function used to add a journal entry to the app
+const addJournalEntry = () => {
+
+	console.log( "addJournalEntry()" );
+
+};
+
+// Add event listeners when the page is ready
+document.addEventListener( 'DOMContentLoaded', () => {
+
+	// Add functionality to 'Generate' button via click event listener
+	document.querySelector( '#generate' ).addEventListener( 'click', addJournalEntry );
+
+});
