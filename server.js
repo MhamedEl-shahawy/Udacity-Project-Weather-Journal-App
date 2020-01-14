@@ -1,5 +1,5 @@
 // Initialize global vars
-const appData = []; // Empty array used as endpoint for all routes
+const projectData = []; // Empty array used as endpoint for all routes
 const port = 8080;
 
 // Include Node.js modules
@@ -28,7 +28,9 @@ app.post( '/upload', postData );
 // Function that handles POST requests
 function postData( request, response ){
 
-	appData.push( request.body );
+	projectData.push( request.body );
+	console.log( 'postData()' );
+	console.log( request.body );
 	response.send( request.body );
 
 }
@@ -39,6 +41,8 @@ app.get( '/all', getData );
 // Function that handles GET requests
 function getData( request, response ){
 
-	response.send( appData );
+	console.log( 'getData()' );
+	console.log( projectData );
+	response.send( projectData );
 
 }
