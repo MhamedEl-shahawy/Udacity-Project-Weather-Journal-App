@@ -12,16 +12,14 @@ const createWeatherURL = ( zipCode ) => {
 // Function used to get weather data from OpenWeatherMap API
 const getWeatherInfo = async ( zipCode ) => {
 
-	const weatherURL = createWeatherURL( zipCode );
-
-	// TO-DO Store user input
-
-	const response = await fetch( weatherURL );
+	const weatherURL = createWeatherURL( zipCode ); // Create valid API URL
+	const response = await fetch( weatherURL ); // Get weather info from OpenWeatherMap.org
 
 	try{
 
-		const weatherData = await response.json();
-		console.log( weatherData );
+		const weatherData = await response.json(); // Convert response to JSON and store
+		weatherData.zipCode = zipCode; // Store selected zip code in return data
+
 		return weatherData;
 
 	}catch( error ){
