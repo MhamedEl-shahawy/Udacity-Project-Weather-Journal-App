@@ -1,5 +1,5 @@
 // Initialize global vars
-const appData = {}; // Empty obj used as endpoint for all routes
+const appData = []; // Empty array used as endpoint for all routes
 const port = 8080;
 
 // Include Node.js modules
@@ -22,8 +22,23 @@ function portInfo(){
 	console.log( `Server Running on Port: ${port}` );
 }
 
-// Initialize all route with a callback function
+// Add POST route
+app.post( '/upload', postData );
 
-// Callback function to complete GET '/all'
+// Function that handles POST requests
+function postData( request, response ){
 
-// Post Route
+	appData.push( request.body );
+	response.send( request.body );
+
+}
+
+// Add GET route
+app.get( '/all', getData );
+
+// Function that handles GET requests
+function getData( request, response ){
+
+	response.send( appData );
+
+}
