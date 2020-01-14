@@ -71,7 +71,9 @@ const getAppData = async ( entryID ) => {
 // Update app UI with the app data
 const updateUI = async ( appData ) => {
 
-	console.log( appData );
+	document.querySelector( '#date' ).innerHTML = appData.date;
+	document.querySelector( '#temp' ).innerHTML = appData.temp;
+	document.querySelector( '#content' ).innerHTML = appData.feelings;
 
 };
 
