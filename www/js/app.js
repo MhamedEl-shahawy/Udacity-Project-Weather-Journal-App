@@ -53,11 +53,20 @@ const postAppData = async ( weatherData ) => {
 
 };
 
-// Function for getting app data
+// Function for getting app data from the server
 const getAppData = async ( entryID ) => {
 
-	console.log( "getAppData()" );
-	console.log( entryID );
+	const appData = {
+		'entryID': '123456789',
+		'date': '1/13/2020',
+		'zipCode': '13659',
+		'temp': '30.97',
+		'feelings': 'Testing feelings...'
+		};
+	
+	return appData;
+
+};
 
 };
 
