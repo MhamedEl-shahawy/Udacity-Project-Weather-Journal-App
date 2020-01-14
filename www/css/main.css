@@ -21,6 +21,7 @@ body {
 
 
 .entry {
+	margin-bottom: 1em;
 	background: rgba(59, 74, 107, .4);
 }
 
