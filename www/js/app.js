@@ -77,7 +77,6 @@ const getAppData = async ( entryID ) => {
 	try{
 
 		const appData = await response.json(); // Convert response to JSON and store
-		console.log( appData );
 		return appData;
 
 	}catch( error ){
@@ -91,9 +90,21 @@ const getAppData = async ( entryID ) => {
 // Update app UI with the app data
 const updateUI = async ( appData ) => {
 
-	document.querySelector( '#date' ).innerHTML = appData.date;
-	document.querySelector( '#temp' ).innerHTML = appData.temp;
-	document.querySelector( '#content' ).innerHTML = appData.feelings;
+	let allEntries = "";
+
+	for( const entry of appData ){
+
+		const journalEntry = `
+		<div id="date">${entry.date}</div>
+		<div id="temp">${entry.temp}</div>
+		<div id="content">${entry.feelings}</div>
+		`;
+
+		allEntries += journalEntry;
+
+	}
+	
+	document.querySelector( '#entryHolder' ).innerHTML = allEntries;
 
 };
 
