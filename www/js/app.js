@@ -100,12 +100,14 @@ const updateUI = async ( appData ) => {
 
 	let allEntries = "";
 
-	for( const entry of appData ){
+	for( const entry of appData.reverse() ){
 
 		const journalEntry = `
-		<div id="date">${entry.date}</div>
-		<div id="temp">${entry.temp}</div>
-		<div id="content">${entry.feelings}</div>
+		<div class="journalEntry">
+			<div id="date">${entry.date}</div>
+			<div id="temp">${entry.temp}</div>
+			<div id="content">${entry.feelings}</div>
+		</div>
 		`;
 
 		allEntries += journalEntry;
