@@ -14,6 +14,8 @@ const getWeatherInfo = async ( zipCode ) => {
 
 	const weatherURL = createWeatherURL( zipCode );
 
+	// TO-DO Store user input
+
 	const response = await fetch( weatherURL );
 
 	try{
@@ -30,16 +32,35 @@ const getWeatherInfo = async ( zipCode ) => {
 
 };
 
-/* Function to POST data */
+// Function for posting app data
+const postAppData = async ( weatherData ) => {
 
+	console.log( "postAppData()" );
+	console.log( weatherData );
 
-/* Function to GET Project Data */
+	return "51294515"; // Debug entry ID
 
+};
+
+// Function for getting app data
+const getAppData = async ( entryID ) => {
+
+	console.log( "getAppData()" );
+	console.log( entryID );
+
+};
 
 // Main function used to add a journal entry to the app
 const addJournalEntry = () => {
 
-	console.log( "addJournalEntry()" );
+	// TO-DO Store user input
+
+	// Get weather info, post data to server, and return entry from server
+	const journalEntry = getWeatherInfo( 13659 )
+							.then( function( weatherData ){ return postAppData( weatherData ); } )
+							.then( function( entryID ){ return getAppData( entryID ); } );
+	
+	// TO-DO Update app display
 
 };
 
