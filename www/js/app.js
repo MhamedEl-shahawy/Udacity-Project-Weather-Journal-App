@@ -30,11 +30,11 @@ const getWeatherInfo = async ( zipCode ) => {
 
 };
 
-// Function for posting app data
+// Function for posting app data to the server
 const postAppData = async ( weatherData ) => {
 
 	// Get user input
-	const userFeelings = document.querySelector( '#feelings' ).value;
+	const feelings = document.querySelector( '#feelings' ).value;
 
 	// Create data for app entry
 	const date = new Date();
@@ -45,7 +45,8 @@ const postAppData = async ( weatherData ) => {
 		'entryID': entryID,
 		'date': dateString,
 		'zipCode': weatherData.zipCode,
-		'temp': weatherData.main.temp
+		'temp': weatherData.main.temp,
+		'feelings': feelings
 		};
 
 	return appData.entryID;
