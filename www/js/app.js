@@ -19,6 +19,14 @@ const getWeatherInfo = async ( zipCode ) => {
 
 		const weatherData = await response.json(); // Convert response to JSON and store
 		weatherData.zipCode = zipCode; // Store selected zip code in return data
+		
+		// Exit promise chain if zip code is not found on OpenWeatherMap API
+		if( weatherData.cod == 404 ){
+
+			return Promise.reject( weatherData.message );
+
+		}
+
 		return weatherData;
 
 	}catch( error ){
@@ -113,12 +121,34 @@ const addJournalEntry = () => {
 
 	// Store user input
 	const zipCode = document.querySelector( '#zip' ).value;
+	const feelings = document.querySelector( '#feelings' ).value;
 
-	// Get weather info, post data to server, and return entry from server
-	getWeatherInfo( zipCode )
-		.then( function( weatherData ){ return postAppData( weatherData ); } )
-		.then( function( entryID ){ return getAppData( entryID ); } )
-		.then( function( appData ){ updateUI( appData );} );
+	// Simple form validation for zip code
+	if( zipCode.length == 5 && !isNaN( zipCode ) ){
+
+		// Simple form validation for feelings
+		if( feelings.length > 0 ){
+
+			// Get weather info, post data to server, and return entry from server
+			getWeatherInfo( zipCode )
+				.then( function( weatherData ){ return postAppData( weatherData ); } )
+				.then( function( entryID ){ return getAppData( entryID ); } )
+				.then( function( appData ){ updateUI( appData );} )
+				.catch( ( error ) => { alert( error ); } );
+
+		}else{
+
+			alert( "Please enter your feelings." );
+			document.querySelector( '#feelings' ).focus();
+
+		}
+	
+	}else{
+
+		alert( 'Please enter a valid 5 digit zip code.' );
+		document.querySelector( '#zip' ).focus();
+
+	}
 
 };
 
