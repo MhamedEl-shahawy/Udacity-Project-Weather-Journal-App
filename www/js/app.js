@@ -116,7 +116,15 @@ const updateUI = async ( appData ) => {
 
 	}
 	
-	document.querySelector( '#entryHolder' ).innerHTML = allEntries;
+	if( allEntries != "" ){
+
+		document.querySelector( '#entryHolder' ).innerHTML = allEntries;
+
+	}else{
+
+		document.querySelector( '#entryHolder' ).innerHTML = "Your journal is currently empty.";
+
+	}
 
 };
 
