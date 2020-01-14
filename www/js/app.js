@@ -68,6 +68,11 @@ const getAppData = async ( entryID ) => {
 
 };
 
+// Update app UI with the app data
+const updateUI = async ( appData ) => {
+
+	console.log( appData );
+
 };
 
 // Main function used to add a journal entry to the app
@@ -77,11 +82,10 @@ const addJournalEntry = () => {
 	const zipCode = document.querySelector( '#zip' ).value;
 
 	// Get weather info, post data to server, and return entry from server
-							.then( function( weatherData ){ return postAppData( weatherData ); } )
-							.then( function( entryID ){ return getAppData( entryID ); } );
-	
-	// TO-DO Update app display
 	getWeatherInfo( zipCode )
+		.then( function( weatherData ){ return postAppData( weatherData ); } )
+		.then( function( entryID ){ return getAppData( entryID ); } )
+		.then( function( appData ){ updateUI( appData );} );
 
 };
 
