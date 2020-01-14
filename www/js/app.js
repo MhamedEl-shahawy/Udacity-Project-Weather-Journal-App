@@ -52,6 +52,7 @@ const postAppData = async ( weatherData ) => {
 		'entryID': entryID,
 		'date': dateString,
 		'zipCode': weatherData.zipCode,
+		'name': weatherData.name,
 		'temp': weatherData.main.temp,
 		'feelings': feelings
 		};
@@ -105,7 +106,8 @@ const updateUI = async ( appData ) => {
 		const journalEntry = `
 		<div class="journalEntry">
 			<div id="date">${entry.date}</div>
-			<div id="temp">${entry.temp}</div>
+			<div id="city">${entry.name}</div>
+			<div id="temp">${entry.temp}°F</div>
 			<div id="content">${entry.feelings}</div>
 		</div>
 		`;
