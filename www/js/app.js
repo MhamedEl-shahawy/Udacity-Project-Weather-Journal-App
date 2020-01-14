@@ -33,10 +33,22 @@ const getWeatherInfo = async ( zipCode ) => {
 // Function for posting app data
 const postAppData = async ( weatherData ) => {
 
-	console.log( "postAppData()" );
-	console.log( weatherData );
+	// Get user input
+	const userFeelings = document.querySelector( '#feelings' ).value;
 
-	return "51294515"; // Debug entry ID
+	// Create data for app entry
+	const date = new Date();
+	const entryID = date.getTime();
+	const dateString = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+
+	const appData = {
+		'entryID': entryID,
+		'date': dateString,
+		'zipCode': weatherData.zipCode,
+		'temp': weatherData.main.temp
+		};
+
+	return appData.entryID;
 
 };
 
