@@ -1,7 +1,7 @@
 // OpenWeatherMap API
 const personalKey = '4de8f23828879dec98d1f230e00b3bd4';
 const baseURL1 = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-const baseURL2 = ',us&appid=';
+const baseURL2 = ',us&units=imperial&appid=';
 
 const createWeatherURL = ( zipCode ) => {
 
