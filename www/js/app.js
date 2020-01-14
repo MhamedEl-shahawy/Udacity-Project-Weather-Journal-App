@@ -133,9 +133,9 @@ const addJournalEntry = () => {
 
 			// Get weather info, post data to server, and return entry from server
 			getWeatherInfo( zipCode )
-				.then( function( weatherData ){ return postAppData( weatherData ); } )
-				.then( function(){ return getAppData(); } )
-				.then( function( appData ){ updateUI( appData );} )
+				.then( ( weatherData ) => { return postAppData( weatherData ); } )
+				.then( () => { return getAppData(); } )
+				.then( ( appData ) => { updateUI( appData );} )
 				.catch( ( error ) => { alert( error ); } );
 
 		}else{
