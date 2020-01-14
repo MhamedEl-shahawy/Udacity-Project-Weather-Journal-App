@@ -78,7 +78,7 @@ const postAppData = async ( weatherData ) => {
 };
 
 // Function for getting app data from the server
-const getAppData = async ( entryID ) => {
+const getAppData = async () => {
 
 	const response = await fetch( '/all' );
 
@@ -134,7 +134,7 @@ const addJournalEntry = () => {
 			// Get weather info, post data to server, and return entry from server
 			getWeatherInfo( zipCode )
 				.then( function( weatherData ){ return postAppData( weatherData ); } )
-				.then( function( entryID ){ return getAppData( entryID ); } )
+				.then( function(){ return getAppData(); } )
 				.then( function( appData ){ updateUI( appData );} )
 				.catch( ( error ) => { alert( error ); } );
 
