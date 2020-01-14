@@ -19,7 +19,6 @@ const getWeatherInfo = async ( zipCode ) => {
 
 		const weatherData = await response.json(); // Convert response to JSON and store
 		weatherData.zipCode = zipCode; // Store selected zip code in return data
-
 		return weatherData;
 
 	}catch( error ){
@@ -49,22 +48,43 @@ const postAppData = async ( weatherData ) => {
 		'feelings': feelings
 		};
 
-	return appData.entryID;
+	const response = await fetch( '/upload', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify( appData )
+		});
+
+	try{
+
+		const returnData = await response.json();
+		return returnData.entryID;
+
+	}catch( error ){
+
+		console.log( error );
+
+	}
 
 };
 
 // Function for getting app data from the server
 const getAppData = async ( entryID ) => {
 
-	const appData = {
-		'entryID': '123456789',
-		'date': '1/13/2020',
-		'zipCode': '13659',
-		'temp': '30.97',
-		'feelings': 'Testing feelings...'
-		};
-	
-	return appData;
+	const response = await fetch( '/all' );
+
+	try{
+
+		const appData = await response.json(); // Convert response to JSON and store
+		console.log( appData );
+		return appData;
+
+	}catch( error ){
+
+		console.log( error );
+
+	}
 
 };
 
