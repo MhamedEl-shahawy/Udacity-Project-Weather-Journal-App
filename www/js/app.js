@@ -160,4 +160,8 @@ document.addEventListener( 'DOMContentLoaded', () => {
 	// Add functionality to 'Generate' button via click event listener
 	document.querySelector( '#generate' ).addEventListener( 'click', addJournalEntry );
 
+	// Load existing journal entries
+	getAppData()
+		.then( ( appData ) => { updateUI( appData ); } );
+
 });
